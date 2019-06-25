@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:tic_tac_toe/models/Board.dart';
 
 class Tile extends StatelessWidget {
-  final Border _borderSettings;
+  final int columnIndex;
+  final int rowIndex;
+  final Border borderSettings;
+  final Square square;
 
-  Tile(this._borderSettings);
+  Tile({ this.borderSettings, this.square, this.columnIndex, this.rowIndex });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => {},
+      onTap: () => Provider.of<BoardModel>(context, listen: false).setSquare('X', rowIndex, columnIndex),
       child: Column(
         children: <Widget>[
           Container(
               height: 100.0,
+              width: 77.0,
               decoration: BoxDecoration(
-                border: _borderSettings,
+                border: borderSettings,
               ),
               padding: EdgeInsets.all(20.0),
               child: Center(
                 child: Text(
-                  'X',
+                  square.value,
                   style: TextStyle(
                     fontSize: 50.0,
                     color: Colors.indigo,

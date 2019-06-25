@@ -13,7 +13,6 @@ class BoardModel extends ChangeNotifier {
     [
       Square(''),Square(''),Square(''),
     ],
-
   ];
 
   // BoardModel() {}
@@ -22,12 +21,12 @@ class BoardModel extends ChangeNotifier {
 
   }
 
-  /// An unmodifiable view of the items in the cart.
   UnmodifiableListView<List<Square>> get squares => UnmodifiableListView(_squares);
+
+  UnmodifiableListView<Square> getRows(row) => UnmodifiableListView(squares[row]);
 
   void setSquare(String value, row, column) {
     this._squares[row].replaceRange(column, column + 1, [Square(value)]);
-    // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();
   }
 }
