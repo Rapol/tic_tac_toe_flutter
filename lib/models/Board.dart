@@ -1,28 +1,29 @@
 import 'package:flutter/foundation.dart';
 import 'dart:collection';
 
-enum Player {
-  X,
-  O,
-}
-
-int getTileNumber(int row, int column) => row * 3 + column;
+import 'package:tic_tac_toe/constants.dart';
+import 'package:tic_tac_toe/utils/BoardUtils.dart';
 
 class BoardModel extends ChangeNotifier {
   Player _currentPlayer = Player.X;
+
+  static int boardSize = 3;
 
   final Map<Player, List<int>> _playerMoves = {
     Player.X: [],
     Player.O: [],
   };
 
-  // BoardModel() {}
+  BoardModel({List<int> xPlayerMoves, List<int> oPlayerMoves}) {
+    _playerMoves[Player.X] ??= xPlayerMoves;
+    _playerMoves[Player.O] ??= oPlayerMoves;
+  }
 
   List<List<Square>> _buildBoard() {
     return List<List<Square>>.generate(
-      3,
+      boardSize,
       (int row) => List<Square>.generate(
-            3,
+            boardSize,
             (int column) {
               if (this
                   ._playerMoves[Player.X]
@@ -59,7 +60,10 @@ class BoardModel extends ChangeNotifier {
     _currentPlayer = _currentPlayer == Player.X ? Player.O : Player.X;
   }
 
-  void resetBoard() {}
+  void clearBoard() {
+    _playerMoves[Player.X].clear();
+    _playerMoves[Player.O].clear();
+  }
 }
 
 @immutable

@@ -3,8 +3,11 @@ import 'dart:collection';
 
 import 'package:tic_tac_toe/widget/Tile.dart';
 import 'package:tic_tac_toe/models/Board.dart';
+import 'package:tic_tac_toe/utils/BoardUtils.dart';
 
 const BorderSide defaultBorder = BorderSide(width: 5.0);
+
+// TODO: make this list dynamic
 const tileBorders = [
   Border(
     right: defaultBorder,
@@ -48,9 +51,9 @@ class TileRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List<Widget>.generate(
-        3,
+        BoardModel.boardSize,
         (columnIndex) => Tile(
-              borderSettings: tileBorders[columnIndex + rowIndex * 3],
+              borderSettings: tileBorders[getTileNumber(rowIndex, columnIndex)],
               square: squares[columnIndex],
               rowIndex: rowIndex,
               columnIndex: columnIndex,

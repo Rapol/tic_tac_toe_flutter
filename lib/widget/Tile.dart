@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:tic_tac_toe/models/Board.dart';
+import 'package:tic_tac_toe/constants.dart';
 
 displayTileValue(Player p) {
   switch(p){

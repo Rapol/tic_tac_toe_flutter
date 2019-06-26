@@ -12,7 +12,7 @@ class Board extends StatelessWidget {
         builder: (context, board, child) => Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
-                3,
+                BoardModel.boardSize,
                 (index) => TileRow(
                       rowIndex: index,
                       squares: board.getRows(index),
