@@ -7,19 +7,17 @@ import 'package:tic_tac_toe/widget/TileRow.dart';
 class Board extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Consumer<BoardModel>(
-        builder: (context, board, child) => Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                BoardModel.boardSize,
-                (index) => TileRow(
-                      rowIndex: index,
-                      squares: board.getRows(index),
-                    ),
-              ),
+    return Consumer<BoardModel>(
+      builder: (context, board, child) => Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              BoardModel.boardSize,
+              (index) => TileRow(
+                    rowIndex: index,
+                    squares: board.getRows(index),
+                  ),
             ),
-      ),
+          ),
     );
   }
 }

@@ -36,6 +36,10 @@ class BoardModel extends ChangeNotifier {
     Player.X: [],
     Player.O: [],
   };
+  final Map<Player, int> _playerScores = {
+    Player.X: 0,
+    Player.O: 0,
+  };
 
   BoardModel({List<int> xPlayerMoves, List<int> oPlayerMoves}) {
     _playerMoves[Player.X] ??= xPlayerMoves;
@@ -69,6 +73,8 @@ class BoardModel extends ChangeNotifier {
 
   Player get currentPlayer => _currentPlayer;
   GameState get gameState => _gameState;
+  int get getXScore => _playerScores[Player.X];
+  int get getOScore => _playerScores[Player.O];
 
   void setSquare(row, column) {
     if (this.squares[row][column].value != null) {
@@ -84,6 +90,7 @@ class BoardModel extends ChangeNotifier {
     if (winner) {
       print('Winner found $winner!');
       _gameState = GameState.FINISHED;
+      _playerScores[_currentPlayer]++;
       notifyListeners();
       return;
     }

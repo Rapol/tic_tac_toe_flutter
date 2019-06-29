@@ -40,7 +40,7 @@ class Tile extends StatelessWidget {
               child: Center(
                 child: Text(
                   displayTileValue(square.value),
-                  style: Theme.of(context).textTheme.headline,
+                  style: Theme.of(context).textTheme.display1,
                 ),
               ))
         ],

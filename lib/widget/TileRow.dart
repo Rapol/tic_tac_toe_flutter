@@ -5,7 +5,9 @@ import 'package:tic_tac_toe/widget/Tile.dart';
 import 'package:tic_tac_toe/models/Board.dart';
 import 'package:tic_tac_toe/utils/BoardUtils.dart';
 
-const BorderSide defaultBorder = BorderSide(width: 5.0);
+import 'package:tic_tac_toe/constants.dart';
+
+const BorderSide defaultBorder = BorderSide(width: 5.0, color: accentColor);
 
 // TODO: make this list dynamic
 const tileBorders = [
