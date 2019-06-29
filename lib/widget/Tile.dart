@@ -31,8 +31,8 @@ class Tile extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-              height: 100.0,
-              width: 77.0,
+              height: 120.0,
+              width: 100.0,
               decoration: BoxDecoration(
                 border: borderSettings,
               ),
@@ -40,10 +40,7 @@ class Tile extends StatelessWidget {
               child: Center(
                 child: Text(
                   displayTileValue(square.value),
-                  style: TextStyle(
-                    fontSize: 50.0,
-                    color: Colors.indigo,
-                  ),
+                  style: Theme.of(context).textTheme.headline,
                 ),
               ))
         ],

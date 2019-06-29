@@ -68,7 +68,7 @@ class BoardModel extends ChangeNotifier {
       UnmodifiableListView(squares[row]);
 
   Player get currentPlayer => _currentPlayer;
-  GameState get getGameState => _gameState;
+  GameState get gameState => _gameState;
 
   void setSquare(row, column) {
     if (this.squares[row][column].value != null) {
@@ -84,7 +84,6 @@ class BoardModel extends ChangeNotifier {
     if (winner) {
       print('Winner found $winner!');
       _gameState = GameState.FINISHED;
-      resetGame();
       notifyListeners();
       return;
     }
@@ -92,7 +91,6 @@ class BoardModel extends ChangeNotifier {
     if (tied) {
       print('Tied game!');
       _gameState = GameState.TIED;
-      resetGame();
       notifyListeners();
       return;
     }

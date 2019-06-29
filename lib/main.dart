@@ -14,14 +14,26 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Tic Tac Tow',
         theme: ThemeData(
-          primarySwatch: Colors.yellow,
+          primarySwatch: Colors.orange,
+          // Define the default brightness and colors.
+          brightness: Brightness.light,
+          primaryColor: Colors.orange,
+          accentColor: Colors.purpleAccent,
+
+          // Define the default font family.
+          fontFamily: 'DM Sans',
+
+          // Define the default TextTheme. Use this to specify the default
+          // text styling for headlines, titles, bodies of text, and more.
           textTheme: TextTheme(
-            display4: TextStyle(
-              fontFamily: 'Corben',
-              fontWeight: FontWeight.w700,
-              fontSize: 24,
-              color: Colors.black,
-            ),
+            headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+            title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+            body1: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          ),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.blueAccent,
+            shape: RoundedRectangleBorder(),
+            textTheme: ButtonTextTheme.accent,
           ),
         ),
         initialRoute: '/',
