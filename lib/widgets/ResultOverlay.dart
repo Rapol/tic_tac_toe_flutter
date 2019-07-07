@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tic_tac_toe/constants.dart' as constants;
 
 import 'package:tic_tac_toe/models/Board.dart';
-import 'package:tic_tac_toe/widget/LandingLayout.dart';
+import 'package:tic_tac_toe/widgets/LandingLayout.dart';
 
 class ResultOverlay extends StatelessWidget {
   @override

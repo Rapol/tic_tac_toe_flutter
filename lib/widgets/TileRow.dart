@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:collection';
 
-import 'package:tic_tac_toe/widget/Tile.dart';
+import 'package:tic_tac_toe/widgets/Tile.dart';
 import 'package:tic_tac_toe/models/Board.dart';
 import 'package:tic_tac_toe/utils/BoardUtils.dart';
 

@@ -5,10 +5,10 @@ import 'package:tic_tac_toe/constants.dart';
 
 import 'package:tic_tac_toe/models/Board.dart';
 
-import 'package:tic_tac_toe/widget/Board.dart';
-import 'package:tic_tac_toe/widget/ScoreBoard.dart';
-import 'package:tic_tac_toe/widget/ResultOverlay.dart';
-import 'package:tic_tac_toe/widget/CloseGameDialog.dart';
+import 'package:tic_tac_toe/widgets/Board.dart';
+import 'package:tic_tac_toe/widgets/ScoreBoard.dart';
+import 'package:tic_tac_toe/widgets/ResultOverlay.dart';
+import 'package:tic_tac_toe/widgets/CloseGameDialog.dart';
 
 class GameScreen extends StatelessWidget {
   Future<bool> _onWillPop(context) {

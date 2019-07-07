@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:tic_tac_toe/constants.dart' as constants;
 
-import 'package:tic_tac_toe/widget/LandingLayout.dart';
-import 'package:tic_tac_toe/widget/BackgroundAnimation.dart';
+import 'package:tic_tac_toe/widgets/LandingLayout.dart';
+import 'package:tic_tac_toe/widgets/BackgroundAnimation.dart';
 
-class StartingScreen extends StatelessWidget {
+class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

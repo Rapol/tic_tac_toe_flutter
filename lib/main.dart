@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:tic_tac_toe/models/Board.dart';
 import 'package:tic_tac_toe/screens/GameScreen.dart';
-import 'package:tic_tac_toe/screens/StartingScreen.dart';
+import 'package:tic_tac_toe/screens/StartScreen.dart';
 import 'package:tic_tac_toe/utils/Theme.dart';
 
 void main() => runApp(MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         theme: appTheme,
         initialRoute: '/',
         routes: {
-          '/': (context) => StartingScreen(),
+          '/': (context) => StartScreen(),
           '/game': (context) => GameScreen(),
         },
       ),
