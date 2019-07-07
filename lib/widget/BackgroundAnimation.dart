@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
-import 'package:tic_tac_toe/constants.dart' as constants;
+import 'package:tic_tac_toe/utils/AnimationManager.dart';
 
-final rand = new Random();
+import 'package:tic_tac_toe/utils/helpers.dart';
 
 class BackgroundAnimation extends StatefulWidget {
   @override
@@ -14,82 +13,55 @@ class BackgroundAnimation extends StatefulWidget {
 
 class BackgroundAnimationState extends State<BackgroundAnimation>
     with TickerProviderStateMixin {
-  static const int numberOfAnimations = 5;
+  static const int NUM_ANIMATIONS = 10;
   static const int MIN_ANIMATION_DURATION = 3;
   static const int MAX_ANIMATION_DURATION = 7;
-  final List<AnimationController> controllers = [];
-  final List<CurvedAnimation> curvedAnimations = [];
-  final List<Animation<RelativeRect>> rectAnimations = [];
-
-  initializeControllers(int i) {
-    final int duration = getRandomNumber(MAX_ANIMATION_DURATION, MIN_ANIMATION_DURATION);
-    controllers.add(AnimationController(
-      vsync: this,
-      duration: Duration(seconds: duration),
-    ));
-  }
-
-  initializeAnimations(int i) {
-    curvedAnimations
-        .add(CurvedAnimation(parent: controllers[i], curve: Curves.easeInOut));
-  }
-
-  buildRectTweens(int i) {
-    final double rndWidth = getRandomNumber(this.context.size.width.toInt()).toDouble();
-    final Animation<RelativeRect> rect = RelativeRectTween(
-      begin: RelativeRect.fromLTRB(rndWidth, -60.0, 0, 0),
-      end: RelativeRect.fromLTRB(rndWidth, this.context.size.height, 0, 0.0),
-    ).animate(curvedAnimations[i])
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          controllers[i].repeat();
-        }
-      });
-    rectAnimations.add(rect);
-  }
-
-  setupAnimations(Duration duration) {
-    for (var i = 0; i < numberOfAnimations; i++) {
-      initializeControllers(i);
-      initializeAnimations(i);
-      buildRectTweens(i);
-      controllers[i].forward();
-      setState(() {
-        
-      });
-    }
-  }
+  AnimationManager _animationManager;
+  List<Animation<RelativeRect>> _rectAnimations = [];
 
   @override
   void initState() {
     super.initState();
+    // Executed after the widget is built
     WidgetsBinding.instance.addPostFrameCallback(setupAnimations);
   }
 
   @override
   void dispose() {
-    controllers?.forEach((c) => c.dispose());
+    this._animationManager.disposeAnimations();
     super.dispose();
+  }
+
+  setupAnimations(Duration duration) {
+    this._animationManager = new AnimationManager(
+      numberOfAnimations: NUM_ANIMATIONS,
+      miniumDurationInSeconds: MIN_ANIMATION_DURATION,
+      maximumDurationInSeconds: MAX_ANIMATION_DURATION,
+      maxHeight: this.context.size.height,
+      maxWidth: this.context.size.width,
+      ticker: this,
+    );
+    setState(() {
+      this._rectAnimations.addAll(this._animationManager.rectAnimations);
+      this._animationManager.startAnimations();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
-      children: this.rectAnimations.map((rect) {
+      // for each animation, build a PositionedTransition widget
+      children: this._rectAnimations.map((rect) {
         return PositionedTransition(
           rect: rect,
           child: Text(getRandomNumber(1) == 0 ? 'X' : 'O',
               style: Theme.of(context)
                   .textTheme
-                  .display2
-                  .apply(fontSizeFactor: 0.6)),
+                  .display3
+                  .copyWith(fontSize: 42.0)),
         );
       }).toList(),
     );
   }
-}
-
-int getRandomNumber(int max, [int min = 0]) {
-  return min + rand.nextInt(max + 1 - min);
 }
