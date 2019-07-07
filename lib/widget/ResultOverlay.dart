@@ -40,7 +40,7 @@ class ResultOverlay extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               child: Text(
                 'Retry',
-                style: Theme.of(context).textTheme.display3,
+                style: Theme.of(context).textTheme.display4,
               ),
               onPressed: board.resetGame,
               borderSide: BorderSide(width: 1.5, color: constants.primaryColor),

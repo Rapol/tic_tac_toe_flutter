@@ -5,7 +5,7 @@ import 'package:tic_tac_toe/constants.dart' as constants;
 
 import 'package:tic_tac_toe/models/Board.dart';
 import 'package:tic_tac_toe/screens/GameScreen.dart';
-import 'package:tic_tac_toe/screens/LandingScreen.dart';
+import 'package:tic_tac_toe/screens/StartingScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       builder: (context) => BoardModel(),
       child: MaterialApp(
-        title: 'Flutter Tic Tac Tow',
+        title: 'Tic Tac Toe',
         theme: ThemeData(
           // primarySwatch: Colors.green,
           // Define the default brightness and colors.
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           accentColor: constants.accentColor,
 
           // Define the default font family.
-          fontFamily: 'DM Sans',
+          // fontFamily: 'DM Sans',
 
           // Define the default TextTheme. Use this to specify the default
           // text styling for headlines, titles, bodies of text, and more.
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: constants.textColor),
             display2: TextStyle(
-              fontSize: 72.0,
+              fontSize: 84.0,
               fontWeight: FontWeight.bold,
               color: Color(0xFF303030),
               shadows: [
@@ -64,7 +64,30 @@ class MyApp extends StatelessWidget {
                     color: constants.primaryColor),
               ],
             ),
-            display3: TextStyle(fontSize: 20.0, color: constants.accentColor, fontWeight: FontWeight.bold),
+            display3: TextStyle(
+              fontSize: 72.0,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF303030),
+              shadows: [
+                Shadow(
+                    // bottomLeft
+                    offset: Offset(-shadowOffset, -shadowOffset),
+                    color: constants.accentColor),
+                Shadow(
+                    // bottomRight
+                    offset: Offset(shadowOffset, -shadowOffset),
+                    color: constants.accentColor),
+                Shadow(
+                    // topRight
+                    offset: Offset(shadowOffset, shadowOffset),
+                    color: constants.accentColor),
+                Shadow(
+                    // topLeft
+                    offset: Offset(-shadowOffset, shadowOffset),
+                    color: constants.accentColor),
+              ],
+            ),
+            display4: TextStyle(fontSize: 20.0, color: constants.accentColor, fontWeight: FontWeight.bold),
           ),
           buttonTheme: ButtonThemeData(
             buttonColor: constants.primaryColor,
@@ -80,7 +103,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => LandingPage(),
+          '/': (context) => StartingScreen(),
           '/game': (context) => GameScreen(),
         },
       ),
