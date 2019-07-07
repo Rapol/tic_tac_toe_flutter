@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/utils/AnimationManager.dart';
 
 import 'package:tic_tac_toe/utils/helpers.dart';
+import 'package:tic_tac_toe/constants.dart';
 
 class BackgroundAnimation extends StatefulWidget {
   @override
@@ -33,6 +34,8 @@ class BackgroundAnimationState extends State<BackgroundAnimation>
   }
 
   setupAnimations(Duration duration) {
+    print(this.context.size.width);
+    print(this.context.size.height);
     this._animationManager = new AnimationManager(
       numberOfAnimations: NUM_ANIMATIONS,
       miniumDurationInSeconds: MIN_ANIMATION_DURATION,
@@ -55,7 +58,7 @@ class BackgroundAnimationState extends State<BackgroundAnimation>
       children: this._rectAnimations.map((rect) {
         return PositionedTransition(
           rect: rect,
-          child: Text(getRandomNumber(1) == 0 ? 'X' : 'O',
+          child: Text(getRandomNumber(1) == 0 ? X_SYMBOL : O_SYMBOL,
               style: Theme.of(context)
                   .textTheme
                   .display3

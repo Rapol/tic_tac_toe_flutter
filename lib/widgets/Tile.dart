@@ -7,9 +7,9 @@ import 'package:tic_tac_toe/constants.dart';
 displayTileValue(Player p) {
   switch(p){
     case Player.X:
-      return 'X';
+      return X_SYMBOL;
     case Player.O:
-      return 'O';
+      return O_SYMBOL;
     default:
       return '';
   }

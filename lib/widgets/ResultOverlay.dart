@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:tic_tac_toe/constants.dart' as constants;
+import 'package:tic_tac_toe/utils/helpers.dart';
 
 import 'package:tic_tac_toe/models/Board.dart';
 import 'package:tic_tac_toe/widgets/LandingLayout.dart';
@@ -15,7 +16,7 @@ class ResultOverlay extends StatelessWidget {
           board.gameState == constants.GameState.FINISHED
               ? <Widget>[
                   Text(
-                    '${board.currentPlayer}',
+                    '${displayPlayerSymbol(board.currentPlayer)}',
                     style: textStyle,
                   ),
                   Text(
@@ -42,7 +43,7 @@ class ResultOverlay extends StatelessWidget {
                 'Retry',
                 style: Theme.of(context).textTheme.display4,
               ),
-              onPressed: board.resetGame,
+              onPressed: board.restartGame,
               borderSide: BorderSide(width: 1.5, color: constants.primaryColor),
             ),
           ),

@@ -17,7 +17,7 @@ class CloseGameDialog extends StatelessWidget {
         FlatButton(
           child: Text('Yes'),
           onPressed: () {
-            Provider.of<BoardModel>(context, listen: false).resetGame();
+            Provider.of<BoardModel>(context, listen: false).endGame();
             return Navigator.pop(context, true);
           },
         ),

@@ -122,11 +122,16 @@ class BoardModel extends ChangeNotifier {
     _currentPlayer = _currentPlayer == Player.X ? Player.O : Player.X;
   }
 
-  void resetGame() {
+  void restartGame() {
     _playerMoves[Player.X].clear();
     _playerMoves[Player.O].clear();
     _gameState = GameState.IN_PROGRESS;
+    _currentPlayer = Player.X;
     notifyListeners();
+  }
+  void endGame() {
+    _playerScores.updateAll((Player p, int score) => 0);
+    restartGame();
   }
 }
 

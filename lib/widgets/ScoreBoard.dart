@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import 'package:tic_tac_toe/models/Board.dart';
+import 'package:tic_tac_toe/constants.dart';
 
 class ScoreBoard extends StatelessWidget {
-  int xScore = 0;
-  int oScore = 0;
+  final int xScore;
+  final int oScore;
 
   ScoreBoard({this.xScore, this.oScore});
 
@@ -19,14 +18,14 @@ class ScoreBoard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('X', style: Theme.of(context).textTheme.title, textAlign: TextAlign.center,),
+              Text(X_SYMBOL, style: Theme.of(context).textTheme.title, textAlign: TextAlign.center,),
               Text('Score $xScore', style: Theme.of(context).textTheme.subhead,),
             ],
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              Text('O', style: Theme.of(context).textTheme.title,),
+              Text(O_SYMBOL, style: Theme.of(context).textTheme.title,),
               Text('Score $oScore', style: Theme.of(context).textTheme.subhead,),
             ],
           ),
